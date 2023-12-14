@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+
+        .controls {
+            display: flex;
+            gap: 8px;
+            align-items: start;
+
+            margin-top: 32px;
+            border-top: 1px solid black;
+            padding-top: 16px;
+        }
+
+        .controlsCol {
+            display: flex;
+            flex-direction: column;
+            gap: 4px
+        }
+    </style>
+</head>
+<body>
+    <canvas id="image" width="500" height="500"></canvas>
+    <canvas id="gistoAll" width="250" height="250"></canvas>
+    <canvas id="gistoRed" width="250" height="250"></canvas>
+    <canvas id="gistoGreen" width="250" height="250"></canvas>
+    <canvas id="gistoBlue" width="250" height="250"></canvas>
+    <div class="controls">
+        <input type="file" placeholder="Load image" id="loadImage" />
+        <button id="invert">Инвертировать</button>
+        <button id="gray">Градации серого</button>
+        <div class="controlsCol">
+            <button id="binar">Бинаризация</button>
+            <input type="range" id="binarRange" value="128" min="0" max="255" oninput="this.nextElementSibling.value = this.value" />
+            <output>128</output>
+        </div>
+        <div class="controlsCol">
+            <button id="bright">Изменить яркость</button>
+            <input type="range" id="brightRange" min="-20" max="20" oninput="this.nextElementSibling.value = this.value" />
+            <output>0</output>
+        </div>
+        <div class="controlsCol">
+            <button id="kontrast">Изменить контрастность</button>
+            <input type="range" id="kontrastRange" min="0" value="50" max="100" oninput="this.nextElementSibling.value = +this.value / 50" />
+            <output>1</output>
+        </div>
+
+        <button id="reset">Reset</button>
+    </div>
+
+    <script src="script.js" type="module"></script>
+</body>
+</html>
